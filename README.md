@@ -1,16 +1,64 @@
-# React + Vite
+# 🐾 Clicky Pets
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A small, playful React app where you adopt random animals and shower them with love. Click the button to add a pet, then click the pet to make its heart grow bigger and bigger. Styled in a cartoon comic-book look, complete with thick outlines and speech bubbles.
 
-Currently, two official plugins are available:
+![Clicky Pets screenshot](./image.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- **Add animals:** every click on "Add Animal" adds a random pet (bird, cat, cow, dog, gator or horse).
+- **Show some love:** click any animal and its heart grows a little more each time.
+- **Comic style:** halftone background, bold outlines, hard shadows, and CSS-only speech bubbles that change as you click ("Hi!", "Feed me!", "POW!!").
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Built with
 
-## Expanding the ESLint configuration
+- [React](https://react.dev/) with hooks (`useState`)
+- Plain CSS (no UI libraries)
+- SVG animal illustrations
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Getting started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v18 or newer recommended)
+- npm
+
+### Installation
+
+```bash
+# clone the repository
+git clone https://github.com/majd-hourani/clicky-pets.git
+
+# go into the project folder
+cd clicky-pets
+
+# install dependencies
+npm install
+
+# start the development server
+npm start
+```
+
+Then open the local address shown in your terminal (usually `http://localhost:3000`).
+
+## Project structure
+
+```
+clicky-pets/
+├── image.png          # screenshot used in this README
+└── src/
+    ├── App.js         # main component: the button and the list of animals
+    ├── AnimalShow.js  # a single animal card with its growing heart
+    ├── App.css        # all the comic-style styling
+    └── svg/           # animal and heart illustrations
+```
+
+## How it works
+
+- `App` keeps an array of animals in state. Each click on the button appends a random animal name to it.
+- `AnimalShow` receives an animal name, looks up its SVG, and keeps its own `clicks` counter in state. Every click on the card makes the heart image bigger.
+- Styling lives in `App.css`. The speech bubbles use `::before` and `::after` pseudo-elements, so they need no extra markup.
+
+## Author
+
+Made by [Majd Hourani](https://github.com/majd-hourani).
