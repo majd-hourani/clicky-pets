@@ -1,0 +1,235 @@
+@import url("https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@700&display=swap");
+
+:root {
+  --ink: #111;
+  --yellow: #ffd93b;
+  --red: #ff3b3b;
+  --blue: #3ba7ff;
+  --paper: #fffbe8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Comic Neue", "Comic Sans MS", cursive;
+  color: var(--ink);
+  background-color: var(--paper);
+  /* halftone comic dots */
+  background-image:
+    radial-gradient(rgba(255, 59, 59, 0.35) 22%, transparent 24%),
+    radial-gradient(rgba(59, 167, 255, 0.35) 22%, transparent 24%);
+  background-size: 22px 22px;
+  background-position:
+    0 0,
+    11px 11px;
+}
+
+/* ---------- page ---------- */
+
+.app {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px 16px 80px;
+  text-align: center;
+}
+
+/* comic title, made with CSS only */
+.app::before {
+  content: "ZOO-POW!";
+  display: inline-block;
+  margin-bottom: 28px;
+  padding: 6px 28px;
+  font-family: "Bangers", cursive;
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  letter-spacing: 3px;
+  color: var(--yellow);
+  -webkit-text-stroke: 3px var(--ink);
+  paint-order: stroke fill;
+  text-shadow: 5px 5px 0 var(--ink);
+  background: var(--red);
+  border: 5px solid var(--ink);
+  box-shadow: 8px 8px 0 var(--ink);
+  transform: rotate(-3deg);
+}
+
+/* ---------- button ---------- */
+
+.add-button {
+  display: block;
+  margin: 0 auto;
+  padding: 12px 40px;
+  font-family: "Bangers", cursive;
+  font-size: 2rem;
+  letter-spacing: 2px;
+  color: var(--ink);
+  background: var(--yellow);
+  border: 5px solid var(--ink);
+  border-radius: 6px;
+  box-shadow: 7px 7px 0 var(--ink);
+  cursor: pointer;
+  transform: skew(-6deg);
+  transition:
+    transform 0.08s,
+    box-shadow 0.08s,
+    background 0.1s;
+}
+
+.add-button:hover {
+  background: #ffe97a;
+  transform: skew(-6deg) translate(-2px, -2px);
+  box-shadow: 10px 10px 0 var(--ink);
+}
+
+.add-button:active {
+  transform: skew(-6deg) translate(6px, 6px);
+  box-shadow: 1px 1px 0 var(--ink);
+}
+
+/* ---------- animal grid ---------- */
+
+.zoo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 90px 36px;
+  margin: 100px 0 0;
+}
+
+/* ---------- comic panel card ---------- */
+
+.animal-card {
+  position: relative;
+  width: 240px;
+  min-height: 200px;
+  padding: 16px;
+  background: #fff;
+  border: 6px solid var(--ink);
+  box-shadow: 9px 9px 0 var(--ink);
+  cursor: pointer;
+  user-select: none;
+  animation: pow 0.35s cubic-bezier(0.3, 1.8, 0.5, 1) both;
+  transition: transform 0.1s;
+}
+
+.animal-card:nth-child(3n + 1) {
+  background: #ffe97a;
+  transform: rotate(-2deg);
+}
+.animal-card:nth-child(3n + 2) {
+  background: #bfe3ff;
+  transform: rotate(1.5deg);
+}
+.animal-card:nth-child(3n) {
+  background: #ffc4c4;
+  transform: rotate(-1deg);
+}
+
+.animal-card:hover {
+  transform: rotate(0deg) scale(1.05);
+  z-index: 2;
+}
+
+.animal-card:active {
+  transform: scale(0.96);
+}
+
+@keyframes pow {
+  0% {
+    opacity: 0;
+    transform: scale(0.1) rotate(-25deg);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* ---------- speech bubble (pure CSS) ---------- */
+
+.animal-card::before {
+  content: "Hi!";
+  position: absolute;
+  top: -68px;
+  left: 14px;
+  min-width: 90px;
+  padding: 6px 14px;
+  font-family: "Bangers", cursive;
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+  text-align: center;
+  background: #fff;
+  border: 4px solid var(--ink);
+  border-radius: 24px;
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+/* bubble tail: ink triangle... */
+.animal-card::after {
+  content: "";
+  position: absolute;
+  top: -22px;
+  left: 44px;
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 22px solid transparent;
+  border-top: 24px solid var(--ink);
+}
+
+.animal-card:nth-child(2)::before {
+  content: "Feed me!";
+}
+.animal-card:nth-child(3)::before {
+  content: "Wassup?";
+}
+.animal-card:nth-child(4)::before {
+  content: "I'm hungry!";
+}
+.animal-card:nth-child(5)::before {
+  content: "Pet me!";
+}
+.animal-card:nth-child(6)::before {
+  content: "Zzz...";
+}
+.animal-card:nth-child(7)::before {
+  content: "Hehe!";
+}
+.animal-card:nth-child(8)::before {
+  content: "Boop!";
+}
+.animal-card:nth-child(n + 9)::before {
+  content: "Yay!";
+}
+
+/* while being clicked */
+.animal-card:active::before {
+  content: "POW!!";
+  background: var(--yellow);
+  color: var(--red);
+  -webkit-text-stroke: 1px var(--ink);
+}
+
+/* ---------- images ---------- */
+
+.animal-pic {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+  background: #fff;
+  border: 4px solid var(--ink);
+}
+
+.heart {
+  display: block;
+  margin: 16px auto 0;
+  max-width: 100%;
+  height: auto;
+  filter: drop-shadow(3px 3px 0 var(--ink));
+  transition:
+    width 0.15s,
+    height 0.15s;
+}

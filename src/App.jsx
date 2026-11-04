@@ -11,7 +11,6 @@ function App() {
   const [animals, setAnimals] = useState([]);
 
   function handleClick() {
-    console.log("Button was clicked");
     setAnimals([...animals, getRandomAnimal()]);
   }
 
@@ -20,9 +19,11 @@ function App() {
   });
 
   return (
-    <div>
-      <button onClick={handleClick}>Add Animal</button>
-      <p>{renderedAnimals}</p>
+    <div className="app">
+      <button className="add-button" onClick={handleClick}>
+        Add Animal
+      </button>
+      <p className="zoo">{renderedAnimals}</p>
     </div>
   );
 }

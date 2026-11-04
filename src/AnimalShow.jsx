@@ -25,9 +25,21 @@ function AnimalShow({ animal }) {
   }
 
   return (
-    <div onClick={handleClick}>
-      <img alt="animal" src={ImageMap[animal]} width={180} height={180} />
-      <img alt="animal" src={heart} width={10 + clicks} height={10 + clicks} />
+    <div className="animal-card" onClick={handleClick}>
+      <img
+        className="animal-pic"
+        alt="animal"
+        src={ImageMap[animal]}
+        width={180}
+        height={180}
+      />
+      <img
+        className="heart"
+        alt="animal"
+        src={heart}
+        width={10 + clicks}
+        height={10 + clicks}
+      />
     </div>
   );
 }
