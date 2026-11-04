@@ -17,7 +17,12 @@ const ImageMap = {
 };
 
 function AnimalShow({ animal }) {
-  return <img alt="animal" src={ImageMap[animal]} width={180} height={180} />;
+  return (
+    <div>
+      <img alt="animal" src={ImageMap[animal]} width={180} height={180} />
+      <img alt="animal" src={heart} width={10} height={10} />
+    </div>
+  );
 }
 
 export default AnimalShow;
